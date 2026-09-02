@@ -1,0 +1,51 @@
+package com.gitrats.user;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+@Service
+public class UserService {
+
+    private UserRepository userRepository;
+
+    public UserService(UserRepository repository) {
+        this.userRepository = repository;
+    }
+
+    public User createUser(User user){
+        return userRepository.save(user);
+    }
+
+    public User findUserId(UUID id){
+        Optional<User> user = userRepository.findById(id);
+        return user.orElse(null);
+    }
+
+    public List<User> listUsers(){
+        List<User> users = userRepository.findAll();
+        return users;
+    }
+
+    public void deleteUser(UUID id){
+        userRepository.deleteById(id);
+    }
+
+    public User updateUser(UUID id, User userUpdate) {
+        Optional<User> userOpt = userRepository.findById(id);
+
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+
+            if (userUpdate.getDisplayName() != null) user.setDisplayName(userUpdate.getDisplayName());
+            if (userUpdate.getBio() != null) user.setBio(userUpdate.getBio());
+            if (userUpdate.getProfilePicture() != null) user.setProfilePicture(
+                    userUpdate.getProfilePicture());
+
+            return userRepository.save(user);
+        }
+        return null;
+    }
+}
