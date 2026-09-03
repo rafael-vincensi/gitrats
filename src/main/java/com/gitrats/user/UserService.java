@@ -46,4 +46,8 @@ public class UserService {
         }
         return null;
     }
+
+    public Optional<User> searchBar(String username){
+        return userRepository.findByUsername(username);
+    }
 }
