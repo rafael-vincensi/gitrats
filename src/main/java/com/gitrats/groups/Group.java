@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Groups {
+public class Group {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +21,9 @@ public class Groups {
 
     @Column(name = "code", unique = true, nullable = false, length = 6)
     private String code;
+
+    @Column(columnDefinition = "TEXT")
+    private String groupPicture;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
