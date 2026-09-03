@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class UserService {
@@ -19,7 +18,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User findUserId(UUID id){
+    public User findUserId(Long id){
         Optional<User> user = userRepository.findById(id);
         return user.orElse(null);
     }
@@ -29,11 +28,11 @@ public class UserService {
         return users;
     }
 
-    public void deleteUser(UUID id){
+    public void deleteUser(Long id){
         userRepository.deleteById(id);
     }
 
-    public User updateUser(UUID id, User userUpdate) {
+    public User updateUser(Long id, User userUpdate) {
         Optional<User> userOpt = userRepository.findById(id);
 
         if (userOpt.isPresent()) {
