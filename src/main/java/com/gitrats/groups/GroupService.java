@@ -26,7 +26,7 @@ public class GroupService {
         groupRepository.deleteById(id);
     }
 
-    public Group editGroup(Long id, Group groupUpdate){
+    public Group groupUpdate(Long id, Group groupUpdate){
         Optional<Group> groupOpt = groupRepository.findById(id);
 
         if (groupOpt != null){
