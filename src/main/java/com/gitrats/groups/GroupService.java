@@ -12,4 +12,9 @@ public class GroupService {
     public GroupService(GroupRepository groupRepository) {
         this.groupRepository = groupRepository;
     }
+
+    public Group createGroup(Group group){
+        return groupRepository.save(group);
+    }
+
 }
