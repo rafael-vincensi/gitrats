@@ -1,5 +1,6 @@
 package com.gitrats.groups;
 
+import jakarta.websocket.server.ServerEndpoint;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,5 +23,9 @@ public class GroupController {
         return groupService.findByCode(code);
     }
 
-    @
+    @PutMapping("/{id}")
+    public Group updateGroup(@RequestParam Long id, @RequestBody Group group){
+        return groupService.groupUpdate(id, group);
+    }
+
 }
