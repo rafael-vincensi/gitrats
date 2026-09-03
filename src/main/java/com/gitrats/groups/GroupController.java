@@ -28,4 +28,9 @@ public class GroupController {
         return groupService.groupUpdate(id, group);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteGroup(Long id){
+        groupService.deleteGroup(id);
+    }
+
 }
