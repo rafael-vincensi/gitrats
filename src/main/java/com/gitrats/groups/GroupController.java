@@ -1,8 +1,6 @@
 package com.gitrats.groups;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/group")
@@ -12,6 +10,11 @@ public class GroupController {
 
     public GroupController(GroupService groupService) {
         this.groupService = groupService;
+    }
+
+    @PostMapping
+    public Group createGroup(@RequestBody Group group){
+        return groupService.createGroup(group);
     }
 
     @GetMapping
