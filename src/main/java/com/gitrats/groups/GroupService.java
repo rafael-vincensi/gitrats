@@ -17,4 +17,9 @@ public class GroupService {
         return groupRepository.save(group);
     }
 
+    public Group findByCode(String code){
+        Optional<Group> group = groupRepository.findByCode(code);
+        return group.orElse(null);
+    }
+
 }
