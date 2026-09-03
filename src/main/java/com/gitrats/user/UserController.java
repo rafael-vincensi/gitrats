@@ -26,17 +26,17 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User findUserId(@RequestParam UUID id){
+    public User findUserId(@RequestParam Long id){
         return userService.findUserId(id);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@RequestBody UUID id, @RequestBody User user){
+    public User updateUser(@RequestBody Long id, @RequestBody User user){
         return userService.updateUser(id, user);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@RequestParam UUID id){
+    public void deleteUser(@RequestParam Long id){
         userService.deleteUser(id);
     }
 }
