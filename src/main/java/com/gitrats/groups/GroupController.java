@@ -17,8 +17,10 @@ public class GroupController {
         return groupService.createGroup(group);
     }
 
-    @GetMapping
-    public Group findByCode(String code){
+    @GetMapping("{/code}")
+    public Group findByCode(@RequestParam String code){
         return groupService.findByCode(code);
     }
+
+    @
 }
