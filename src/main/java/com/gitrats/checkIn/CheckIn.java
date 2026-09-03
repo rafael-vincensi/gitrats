@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table
+@Table(name = "checkins")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -24,9 +24,16 @@ public class CheckIn {
 
     @Column(columnDefinition = "TEXT")
     private String imgUrl;
+
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "users_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
 }
