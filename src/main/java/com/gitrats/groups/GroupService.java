@@ -22,4 +22,9 @@ public class GroupService {
         return group.orElse(null);
     }
 
+    public void deleteGroup(Long id){
+        groupRepository.deleteById(id);
+    }
+
+
 }
