@@ -26,5 +26,17 @@ public class GroupService {
         groupRepository.deleteById(id);
     }
 
+    public Group editGroup(Long id, Group groupUpdate){
+        Optional<Group> groupOpt = groupRepository.findById(id);
+
+        if (groupOpt != null){
+
+            Group group = groupOpt.get();
+
+            if (groupUpdate.getName() != null) group.setName(groupUpdate.getName());
+            if (groupUpdate.getGroupPicture() != null) group.setGroupPicture(groupUpdate.getGroupPicture());
+        }
+        return null;
+    }
 
 }
