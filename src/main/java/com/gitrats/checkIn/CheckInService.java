@@ -9,12 +9,10 @@ import java.util.Optional;
 @Service
 public class CheckInService {
 
-    private final RepositoryMethodInvocationListener repositoryMethodInvocationListener;
     private CheckInRepository checkInRepository;
 
-    public CheckInService(CheckInRepository checkInRepository, RepositoryMethodInvocationListener repositoryMethodInvocationListener) {
+    public CheckInService(CheckInRepository checkInRepository) {
         this.checkInRepository = checkInRepository;
-        this.repositoryMethodInvocationListener = repositoryMethodInvocationListener;
     }
 
     public CheckIn createCheckIn(CheckIn post){
@@ -28,7 +26,7 @@ public class CheckInService {
     public CheckIn updateCheckIn(Long id, CheckIn postUpdate){
         Optional<CheckIn> postOpt = checkInRepository.findById(id);
 
-        if (postOpt != null){
+        if (postOpt.isPresent()){
             CheckIn post = postOpt.get();
             if(postUpdate.getTitle() != null) post.setTitle(postUpdate.getTitle());
             if(postUpdate.getDescription() != null) post.setDescription(postUpdate.getDescription());
@@ -47,6 +45,5 @@ public class CheckInService {
     public List<CheckIn> listCheckIn(){
         return checkInRepository.findAll();
     }
-
 }
 
