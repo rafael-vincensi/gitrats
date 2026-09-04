@@ -1,6 +1,5 @@
 package com.gitrats.checkIn;
 
-import org.hibernate.annotations.DialectOverride;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,17 +25,17 @@ public class CheckInController {
     }
 
     @GetMapping("/{id}")
-    public CheckIn listCheckInId(@RequestParam Long id){
+    public CheckIn listCheckInId(@PathVariable Long id){
         return checkInService.listCheckInId(id);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCheckIn(@RequestParam Long id){
+    public void deleteCheckIn(@PathVariable Long id){
         checkInService.deleteCheckIn(id);
     }
 
-    @PutMapping("/{id}")
-    public CheckIn updateCheckIn(@RequestParam Long id, @RequestBody CheckIn checkIn){
+    @PatchMapping("/{id}")
+    public CheckIn updateCheckIn(@PathVariable Long id, @RequestBody CheckIn checkIn){
         return checkInService.updateCheckIn(id, checkIn);
     }
 
