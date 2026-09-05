@@ -1,9 +1,7 @@
 package com.gitrats.user;
 
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
@@ -26,17 +24,17 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User findUserId(@RequestParam Long id){
+    public User findUserId(@PathVariable Long id){
         return userService.findUserId(id);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@RequestBody Long id, @RequestBody User user){
+    public User updateUser(@PathVariable Long id, @RequestBody User user){
         return userService.updateUser(id, user);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@RequestParam Long id){
+    public void deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
     }
 }
