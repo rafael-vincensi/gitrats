@@ -25,7 +25,7 @@ public class Group {
     @Column(columnDefinition = "TEXT")
     private String groupPicture;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @PrePersist
