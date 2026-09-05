@@ -34,12 +34,14 @@ public class GroupService {
     public Group groupUpdate(Long id, Group groupUpdate){
         Optional<Group> groupOpt = groupRepository.findById(id);
 
-        if (groupOpt != null){
+        if (groupOpt.isPresent()){
 
             Group group = groupOpt.get();
 
             if (groupUpdate.getName() != null) group.setName(groupUpdate.getName());
             if (groupUpdate.getGroupPicture() != null) group.setGroupPicture(groupUpdate.getGroupPicture());
+
+            return groupRepository.save(group);
         }
         return null;
     }
