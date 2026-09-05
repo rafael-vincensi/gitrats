@@ -23,7 +23,8 @@ public class GroupService {
     }
 
     public Group findGroupById(Long id){
-        groupRepository.findById(id);
+        Optional<Group> group = groupRepository.findById(id);
+        return group.orElse(null);
     }
 
     public void deleteGroup(Long id){
