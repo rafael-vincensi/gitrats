@@ -8,7 +8,7 @@ import java.util.List;
 @RequestMapping("/checkin")
 public class CheckInController {
 
-    private CheckInService checkInService;
+    private final CheckInService checkInService;
 
     public CheckInController(CheckInService checkInService) {
         this.checkInService = checkInService;
@@ -38,8 +38,4 @@ public class CheckInController {
     public CheckIn updateCheckIn(@PathVariable Long id, @RequestBody CheckIn checkIn){
         return checkInService.updateCheckIn(id, checkIn);
     }
-
-
-
-
 }
