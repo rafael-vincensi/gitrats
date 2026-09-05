@@ -1,8 +1,6 @@
 package com.gitrats.user;
 
 import org.springframework.stereotype.Service;
-
-import javax.management.Query;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,7 +46,7 @@ public class UserService {
         return null;
     }
 
-    public List<User> searchBar(String query){
+    public List<User> searchUser(String query){
         return userRepository.findByUsernameContainingIgnoreCaseOrDisplayNameContainingIgnoreCase(query, query);
     }
 }

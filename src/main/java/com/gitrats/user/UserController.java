@@ -37,4 +37,9 @@ public class UserController {
     public void deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
     }
+
+    @GetMapping("/search")
+    public List<User> searchUser(@RequestParam("query") String query){
+        return userService.searchUser(query);
+    }
 }
